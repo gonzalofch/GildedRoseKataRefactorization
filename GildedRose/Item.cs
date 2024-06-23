@@ -13,9 +13,13 @@ public class Item
         Quality = quality;
     }
 
-    private static Item CreateItem(string name, int sellIn, int quality)
+    public static Item CreateItem(string name, int sellIn, int quality)
     {
-        return new Item(name, sellIn, quality);
+        Item item = new Item();
+        item.Name = name;
+        item.SellIn = sellIn;
+        item.Quality = quality;
+        return item;
     }
     
     public string Name { get; set; }
