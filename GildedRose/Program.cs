@@ -11,15 +11,15 @@ public class Program
 
         IList<Item> items = new List<Item>
         {
-            Item.CreateItem ("+5 Dexterity Vest", 10, 20),
-            Item.CreateItem("Aged Brie", 2, 0),
-            Item.CreateItem("Elixir of the Mongoose", 5, 7),
-            Item.CreateItem("Sulfuras, Hand of Ragnaros", 0, 80),
-            Item.CreateItem("Sulfuras, Hand of Ragnaros", -1, 80),
-            Item.CreateItem("Backstage passes to a TAFKAL80ETC concert", 15, 20),
-            Item.CreateItem("Backstage passes to a TAFKAL80ETC concert", 10, 49),
-            Item.CreateItem("Backstage passes to a TAFKAL80ETC concert", 5, 49),
-            Item.CreateItem("Conjured Mana Cake", 3, 6)
+            new("+5 Dexterity Vest", 10, 20),
+            new("Aged Brie", 2, 0),
+            new("Elixir of the Mongoose", 5, 7),
+            new("Sulfuras, Hand of Ragnaros", 0, 80),
+            new("Sulfuras, Hand of Ragnaros", -1, 80),
+            new("Backstage passes to a TAFKAL80ETC concert", 15, 20),
+            new("Backstage passes to a TAFKAL80ETC concert", 10, 49),
+            new("Backstage passes to a TAFKAL80ETC concert", 5, 49),
+            new("Conjured Mana Cake", 3, 6)
             // this conjured item does not work properly yet
         };
 
