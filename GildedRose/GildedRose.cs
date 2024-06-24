@@ -45,20 +45,5 @@ public class GildedRose
             // "Conjured Mana Cake" => -2, //doble de rapido xq es creado por mago
             _ => item.SellIn < 0 ? -2 : -1,
         });
-        
-        //pasar esto a un metodo de Item para llamarlo dentro de Update
-        //lo que hace para dis
-
-        if (item.SellIn < 0)
-        {
-            item.UpdateQuality(item.Name switch
-            {
-                "Aged Brie" => 0,
-                "Backstage passes to a TAFKAL80ETC concert" => 0,
-                "Sulfuras, Hand of Ragnaros" => 0,
-                // "Conjured Mana Cake" => -2, //doble de rapido xq es creado por mago, pero no funciona
-                _ => 0,
-            });
-        }
     }
 }
