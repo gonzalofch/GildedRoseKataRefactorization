@@ -41,7 +41,7 @@ public class Program
             }
 
             Console.WriteLine("");
-            app.UpdateQuality();
+            app.Update();
         }
     }
 }

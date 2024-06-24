@@ -13,16 +13,16 @@ public class GildedRose
         this.Items = Items;
     }
 
-    public void UpdateQuality()
+    public void Update()
     {
         Items.Select(item =>
         {
-            Update(item);
+            UpdateItem(item);
             return item;
         }).ToList();
     }
 
-    public void Update(Item item)
+    public void UpdateItem(Item item)
     {
         if (item.Name != "Aged Brie" && item.Name != "Backstage passes to a TAFKAL80ETC concert")
         {
@@ -55,22 +55,13 @@ public class GildedRose
         {
             //"Aged Brie"
 
-            if (item.Name == "Aged Brie")
+            item.Quality = item.Name switch
             {
-                if (item.Quality < 50) item.Quality += 1;
-            }
-            else if (item.Name == "Backstage passes to a TAFKAL80ETC concert")
-            {
-                item.Quality = 0;
-            }
-            else if (item.Name == "Sulfuras, Hand of Ragnaros")
-            {
-                item.Quality -= 0;
-            }
-            else
-            {
-                item.Quality -= 1;
-            }
+                "Aged Brie" => item.UpdateQuality(1),
+                "Backstage passes to a TAFKAL80ETC concert" => item.UpdateQuality(-item.Quality),
+                "Sulfuras, Hand of Ragnaros" => item.UpdateQuality(0),
+                _ => item.UpdateQuality(-1)
+            };
         }
     }
 }
