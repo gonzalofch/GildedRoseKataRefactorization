@@ -24,32 +24,36 @@ public class GildedRose
 
     private void UpdateItem(Item item)
     {
-        item.Quality = item.Name switch
+        if (item.Name != "Sulfuras, Hand of Ragnaros")
+            --item.SellIn;
+
+        //lo que hace el dia anterior
+        item.UpdateQuality(item.Name switch
         {
-            "Aged Brie" => item.UpdateQuality(1),
+            "Aged Brie" => 1,
             "Backstage passes to a TAFKAL80ETC concert" => item.SellIn switch
             {
-                < 6 => item.UpdateQuality(3),
-                < 11 => item.UpdateQuality(2),
-                _ => item.UpdateQuality(1)
-                //esto tal vez pasar a una funcion updatebackstage o algo asi
+                < 5 => 3,
+                < 10 => 2,
+                _ => 1
             },
-            _ => item.UpdateQuality(-1),
-        };
+            "Sulfuras, Hand of Ragnaros" => 0,
+            // "Conjured Mana Cake" => -2, //doble de rapido xq es creado por mago
+            _ => -1,
+        });
+        //pasar esto a un metodo de Item para llamarlo dentro de Update
+        //lo que hace para dis
         
-        item.SellIn -= item.Name == "Sulfuras, Hand of Ragnaros"
-            ? 0
-            : 1;
-
         if (item.SellIn < 0)
         {
-            item.Quality = item.Name switch
+            item.UpdateQuality(item.Name switch
             {
-                "Aged Brie" => item.UpdateQuality(1),
-                "Backstage passes to a TAFKAL80ETC concert" => item.UpdateQuality(-item.Quality),
-                "Sulfuras, Hand of Ragnaros" => item.UpdateQuality(0),
-                _ => item.UpdateQuality(-1)
-            };
+                "Aged Brie" => 1,
+                "Backstage passes to a TAFKAL80ETC concert" => -item.Quality,
+                "Sulfuras, Hand of Ragnaros" => 0,
+                // "Conjured Mana Cake" => -2, //doble de rapido xq es creado por mago, pero no funciona
+                _ => -1
+            });
         }
     }
 }
