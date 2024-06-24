@@ -27,37 +27,21 @@ public class GildedRose
         //aged brie
         if (item.Name == "Aged Brie")
         {
-            if (item.Quality < 50)
-            {
-                item.UpdateQuality(1);
-
-                if (false)
-                {
-                    if (item.SellIn < 11) item.UpdateQuality(1);
-
-                    if (item.SellIn < 6) item.UpdateQuality(1);
-                }
-            }
+            item.UpdateQuality(1);
         }
         //backstage pass
         else if (item.Name == "Backstage passes to a TAFKAL80ETC concert")
         {
-            if (item.Quality < 50)
-            {
-                item.UpdateQuality(1);
+            item.UpdateQuality(1);
 
-                if (true)
-                {
-                    if (item.SellIn < 11) item.UpdateQuality(1);
-
-                    if (item.SellIn < 6) item.UpdateQuality(1);
-                }
-            }
+            if (item.SellIn < 11) item.UpdateQuality(1);
+            if (item.SellIn < 6) item.UpdateQuality(1);
         }
         else if (item.Quality > 0)
             if (item.Name == "Sulfuras, Hand of Ragnaros")
             {
                 item.UpdateQuality(0);
+                //sulfuras no se va a editar, por lo tanto esto se va eliminar
             }
             else
             {
