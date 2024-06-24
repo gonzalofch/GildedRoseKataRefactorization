@@ -33,18 +33,18 @@ public class GildedRose
             //backstage pass
             case "Backstage passes to a TAFKAL80ETC concert":
             {
-                //para convertir a un if else if y else y luego a un switch case tenemos que dar por hecho que el primero (<6 que siempre se realizara una vez mas que el segundo)se realiza 1 vez mas que el segundo y asi
-                if (item.SellIn < 6)
+                switch (item.SellIn)
                 {
-                    item.UpdateQuality(3);
-                }
-                else if (item.SellIn < 11)
-                {
-                    item.UpdateQuality(2);
-                }
-                else
-                {
-                    item.UpdateQuality(1);
+                    //para convertir a un if else if y else y luego a un switch case tenemos que dar por hecho que el primero (<6 que siempre se realizara una vez mas que el segundo)se realiza 1 vez mas que el segundo y asi
+                    case < 6:
+                        item.UpdateQuality(3);
+                        break;
+                    case < 11:
+                        item.UpdateQuality(2);
+                        break;
+                    default:
+                        item.UpdateQuality(1);
+                        break;
                 }
 
                 break;
