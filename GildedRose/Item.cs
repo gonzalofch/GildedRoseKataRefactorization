@@ -18,10 +18,10 @@ public class Item(string name, int sellIn, int quality)
     {
         item.ChangeQuality(item.Name switch
         {
-            "Aged Brie" => item.SellIn < 0
+            "Aged Brie" => SellInBelowZero(item)
                 ? 2
                 : 1,
-            "Backstage passes to a TAFKAL80ETC concert" => item.SellIn < 0
+            "Backstage passes to a TAFKAL80ETC concert" => SellInBelowZero(item)
                 ? -item.Quality
                 : item.SellIn switch
                 {
@@ -29,8 +29,13 @@ public class Item(string name, int sellIn, int quality)
                     < 10 => 2,
                     _ => 1
                 },
-            _ => item.SellIn < 0 ? -2 : -1,
+            _ => SellInBelowZero(item) ? -2 : -1,
         });
+    }
+
+    private static bool SellInBelowZero(Item item)
+    {
+        return item.SellIn < 0;
     }
 
     public static void UpdateSellIn(Item item)
