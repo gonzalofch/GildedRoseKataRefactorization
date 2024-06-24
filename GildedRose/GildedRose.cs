@@ -24,37 +24,53 @@ public class GildedRose
 
     public void UpdateItem(Item item)
     {
-        if (item.Name != "Aged Brie" && item.Name != "Backstage passes to a TAFKAL80ETC concert")
-        {
-            if (item.Quality > 0)
-                if (item.Name != "Sulfuras, Hand of Ragnaros")
-                    item.Quality -= 1;
-        }
-        else
+        if (item.Name == "Aged Brie")
         {
             if (item.Quality < 50)
             {
-                item.Quality += 1;
+                item.UpdateQuality(1);
 
                 if (item.Name == "Backstage passes to a TAFKAL80ETC concert")
                 {
-                    if (item.SellIn < 11)
-                        if (item.Quality < 50)
-                            item.Quality += 1;
+                    if (item.SellIn < 11) item.UpdateQuality(1);
 
-                    if (item.SellIn < 6)
-                        if (item.Quality < 50)
-                            item.Quality += 1;
+                    if (item.SellIn < 6) item.UpdateQuality(1);
                 }
             }
         }
+        else if (item.Name == "Backstage passes to a TAFKAL80ETC concert")
+        {
+            if (item.Quality < 50)
+            {
+                item.UpdateQuality(1);
 
-        if (item.Name != "Sulfuras, Hand of Ragnaros") item.SellIn -= 1;
+                if (item.Name == "Backstage passes to a TAFKAL80ETC concert")
+                {
+                    if (item.SellIn < 11) item.UpdateQuality(1);
+
+                    if (item.SellIn < 6) item.UpdateQuality(1);
+                }
+            }
+        }
+        else
+        {
+            if (item.Quality > 0)
+                if (item.Name == "Sulfuras, Hand of Ragnaros")
+                {
+                    item.UpdateQuality(0);
+                }
+                else
+                {
+                    item.UpdateQuality(-1);
+                }
+        }
+
+        item.SellIn -= item.Name == "Sulfuras, Hand of Ragnaros"
+            ? 0
+            : 1;
 
         if (item.SellIn < 0)
         {
-            //"Aged Brie"
-
             item.Quality = item.Name switch
             {
                 "Aged Brie" => item.UpdateQuality(1),
