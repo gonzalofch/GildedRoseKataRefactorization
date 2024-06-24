@@ -24,39 +24,19 @@ public class GildedRose
 
     private void UpdateItem(Item item)
     {
-        switch (item.Name)
+        item.Quality = item.Name switch
         {
-            //aged brie
-            case "Aged Brie":
-                item.UpdateQuality(1);
-                break;
-            //backstage pass
-            case "Backstage passes to a TAFKAL80ETC concert":
+            "Aged Brie" => item.UpdateQuality(1),
+            "Backstage passes to a TAFKAL80ETC concert" => item.SellIn switch
             {
-                switch (item.SellIn)
-                {
-                    //para convertir a un if else if y else y luego a un switch case tenemos que dar por hecho que el primero (<6 que siempre se realizara una vez mas que el segundo)se realiza 1 vez mas que el segundo y asi
-                    case < 6:
-                        item.UpdateQuality(3);
-                        break;
-                    case < 11:
-                        item.UpdateQuality(2);
-                        break;
-                    default:
-                        item.UpdateQuality(1);
-                        break;
-                }
-
-                break;
-            }
-            default:
-            {
-                item.UpdateQuality(-1);
-                break;
-            }
-        }
-
-
+                < 6 => item.UpdateQuality(3),
+                < 11 => item.UpdateQuality(2),
+                _ => item.UpdateQuality(1)
+                //esto tal vez pasar a una funcion updatebackstage o algo asi
+            },
+            _ => item.UpdateQuality(-1),
+        };
+        
         item.SellIn -= item.Name == "Sulfuras, Hand of Ragnaros"
             ? 0
             : 1;
