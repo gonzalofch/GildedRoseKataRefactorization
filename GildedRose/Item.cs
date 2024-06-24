@@ -1,30 +1,41 @@
 ﻿namespace GildedRoseKata;
 
-public class Item
+public class Item(string name, int sellIn, int quality)
 {
-    public Item(string name, int sellIn, int quality)
+    public string Name { get; } = name;
+    public int SellIn { get; private set; } = sellIn;
+    public int Quality { get; private set; } = quality;
+
+    private void ChangeQuality(int addedQuality)
     {
-        Name = name;
-        SellIn = sellIn;
-        Quality = quality;
-    }
-
-    public string Name { get; set; }
-    public int SellIn { get; set; }
-    public int Quality { get; set; }
-
-    public int UpdateQuality(int addedQuality)
-        //verificar que nunca exceda de 50 ni sea menor a 0
-    {
-        if (Quality > 50)
-        {
-            return Quality; // No realizar cambios si Quality ya es mayor que 50
-        }
-
+        if (Quality > 50) return;
         Quality += addedQuality;
         if (Quality < 0) Quality = 0;
         if (Quality > 50) Quality = 50;
+    }
 
-        return Quality;
+    public static void UpdateQuality(Item item)
+    {
+        item.ChangeQuality(item.Name switch
+        {
+            "Aged Brie" => item.SellIn < 0
+                ? 2
+                : 1,
+            "Backstage passes to a TAFKAL80ETC concert" => item.SellIn < 0
+                ? -item.Quality
+                : item.SellIn switch
+                {
+                    < 5 => 3,
+                    < 10 => 2,
+                    _ => 1
+                },
+            _ => item.SellIn < 0 ? -2 : -1,
+        });
+    }
+
+    public static void UpdateSellIn(Item item)
+    {
+        if (item.Name != "Sulfuras, Hand of Ragnaros")
+            --item.SellIn;
     }
 }
