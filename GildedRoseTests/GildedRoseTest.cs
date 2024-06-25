@@ -1,6 +1,7 @@
 ﻿using Xunit;
 using System.Collections.Generic;
 using GildedRoseKata;
+using GildedRoseKata.Items;
 
 namespace GildedRoseTests;
 
@@ -9,7 +10,7 @@ public class GildedRoseTest
     [Fact]
     public void foo()
     {
-        IList<Item> items = new List<Item> { new("foo", 0, 0) };
+        IList<ItemBase> items = new List<ItemBase> { new NormalItem("foo", 0, 0) };
         GildedRose app = new GildedRose(items);
         app.Update();
         Assert.Equal("foo", items[0].Name);

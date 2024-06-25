@@ -1,16 +1,17 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using GildedRoseKata.Items;
 
 namespace GildedRoseKata;
 
-public class GildedRose(IList<Item> items)
+public class GildedRose(IList<ItemBase> items)
 {
     public void Update()
     {
         items.ToList().ForEach(item =>
         {
-            Item.UpdateSellIn(item);
-            Item.UpdateQuality(item);
+            item.UpdateSellIn();
+            item.UpdateQuality();
         });
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using GildedRoseKata.Items;
 
 namespace GildedRoseKata;
 
@@ -8,21 +9,21 @@ public class Program
     public static void Main(string[] args)
     {
         Console.WriteLine("OMGHAI!");
-
-        IList<Item> items = new List<Item>
+        
+        IList<ItemBase> items = new List<ItemBase>
         {
-            new("+5 Dexterity Vest", 10, 20),
-            new("Aged Brie", 2, 0),
-            new("Elixir of the Mongoose", 5, 7),
-            new("Sulfuras, Hand of Ragnaros", 0, 80),
-            new("Sulfuras, Hand of Ragnaros", -1, 80),
-            new("Backstage passes to a TAFKAL80ETC concert", 15, 20),
-            new("Backstage passes to a TAFKAL80ETC concert", 10, 49),
-            new("Backstage passes to a TAFKAL80ETC concert", 5, 49),
+            new NormalItem("+5 Dexterity Vest", 10, 20),
+            new AgedBrie( 2, 0),
+            new NormalItem("Elixir of the Mongoose", 5, 7),
+            new Sulfuras( 0, 80),
+            new Sulfuras( -1, 80),
+            new BackstagePass( 15, 20),
+            new BackstagePass( 10, 49),
+            new BackstagePass( 5, 49),
             // this conjured item does not work properly yet
-            new("Conjured Mana Cake", 3, 6)
+            new Conjured("Conjured Mana Cake", 3, 6)
         };
-
+        
         var app = new GildedRose(items);
 
         int days = 2;
