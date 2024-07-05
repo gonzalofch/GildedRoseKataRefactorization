@@ -9,6 +9,29 @@ public class Program
 {
     public static void Main(string[] args)
     {
+        /*Aplicando PRINCIPIOS SOLID
+         PROBLEMAS QUE SURGEN DE ESTE CODIGO:
+         -No es tan escalable en caso de querer crear nuevos items
+         -Se pueden instanciar directamente los items que utilizamos
+         -Los items, no son muy escalables en si, tener un solo elemento base es muy general y no nos dice nada realmente
+         de las caracteristicas de cada item
+
+
+         POSIBLES SOLUCIONES APLICANDO PRINCIPIOS SOLID:
+         -Este modulo no debería tener directamente la creacion de instancias. Deberemos usar inyeccion de dependencias
+         para quitarle las dependencias de este modulo sobre los demas.
+         -Crear interfaces segun las caracteristicas de los items e implementar las interfaces que hagan falta en cada
+         clase especifica. Esto soluciona el Principio de Abierto a extension y cerrado a modificacion OpenClosedPrinciple
+         -Cada CLase tiene su propósito, evitar que las clases se sobrecarguen con procesos que no deben hacer
+         Una clase debe hacer solo una cosa
+
+        Buenas practicas a aplicar de otros videos que ví:
+        -Metodos deben hacer una cosa
+        -Mantener el codigo simple
+        -Ser consistente en la manera de hacer codigo (estandarizar de que manera hago todo)
+        -concatenar string usando $ {} Y StringBuilder (es más eficiente en loops)
+
+         */
         Console.WriteLine("OMGHAI!");
 
         IList<ItemBase> items = new List<ItemBase>
