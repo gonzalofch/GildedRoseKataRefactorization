@@ -12,6 +12,7 @@ public class Program
 {
     public static void Main(string[] args)
     {
+        
         /*Aplicando PRINCIPIOS SOLID
          PROBLEMAS QUE SURGEN DE ESTE CODIGO:
          -No es tan escalable en caso de querer crear nuevos items
@@ -43,20 +44,11 @@ public class Program
 
         int days = args.Length > 0 ? int.Parse(args[0]) + 1 : 1;
 
+        var outputPrinter = new OutputPrinter();
         Enumerable.Range(0, days).ToList().ForEach(day =>
         {
-            var output = new StringBuilder();
-
-            output.AppendLine($"-------- day {day} --------");
-            output.AppendLine("name, sellIn, quality");
-            items.ToList().ForEach(item =>
-            {
-                output.AppendLine($"{item.Name}, {item.SellIn}, {item.Quality}");
-            });
-
-            output.AppendLine();
-
-            Console.Write(output.ToString());
+            outputPrinter.PrintDay(day);
+            outputPrinter.PrintItemList(items);
             app.Update();
         });
     }

@@ -28,13 +28,4 @@ public class GildedRose()
             }
         }
     }
-    
-    // public void Update()
-    // {
-    //     items.ToList().ForEach(item =>
-    //     {
-    //         item.UpdateSellIn();
-    //         item.UpdateQuality();
-    //     });
-    // }
 }
