@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using GildedRoseKata.Interfaces;
 using GildedRoseKata.Items;
 using IItem = GildedRoseKata.Interfaces.IItem;
@@ -35,26 +36,28 @@ public class Program
 
          */
         Console.WriteLine("OMGHAI!");
-        
+
         var items = SeedData.ObtainItems();
-        
+
         var app = new GildedRose(items);
 
         int days = args.Length > 0 ? int.Parse(args[0]) + 1 : 1;
 
         Enumerable.Range(0, days).ToList().ForEach(day =>
         {
-            {
-                Console.WriteLine("-------- day " + day + " --------");
-                Console.WriteLine("name, sellIn, quality");
-                items.ToList().ForEach(item =>
-                {
-                    Console.WriteLine(item.Name + ", " + item.SellIn + ", " + item.Quality);
-                });
+            var output = new StringBuilder();
 
-                Console.WriteLine("");
-                app.Update();
-            }
+            output.AppendLine($"-------- day {day} --------");
+            output.AppendLine("name, sellIn, quality");
+            items.ToList().ForEach(item =>
+            {
+                output.AppendLine($"{item.Name}, {item.SellIn}, {item.Quality}");
+            });
+
+            output.AppendLine();
+
+            Console.Write(output.ToString());
+            app.Update();
         });
     }
 }
