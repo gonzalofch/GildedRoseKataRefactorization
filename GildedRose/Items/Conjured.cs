@@ -17,6 +17,11 @@ public class Conjured : IUpdatableItem
         Quality = quality;
     }
 
+    public Conjured()
+    {
+        
+    }
+
     public void UpdateQuality()
     {
         this.ChangeQuality(SellIn.IsBellowMinimum() ? -2 : -1);

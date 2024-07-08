@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using GildedRoseKata.Interfaces;
 using GildedRoseKata.Items;
 using IItem = GildedRoseKata.Interfaces.IItem;
 
@@ -34,21 +35,9 @@ public class Program
 
          */
         Console.WriteLine("OMGHAI!");
-
-        IList<IItem> items = new List<IItem>
-        {
-            new NormalItem("+5 Dexterity Vest", 10, 20),
-            new AgedBrie(2, 0),
-            new NormalItem("Elixir of the Mongoose", 5, 7),
-            new Sulfuras(0, 80),
-            new Sulfuras(-1, 80),
-            new BackstagePass(15, 20),
-            new BackstagePass(10, 49),
-            new BackstagePass(5, 49),
-            // this conjured item does not work properly yet
-            new Conjured("Conjured Mana Cake", 3, 6)
-        };
-
+        
+        var items = SeedData.ObtainItems();
+        
         var app = new GildedRose(items);
 
         int days = args.Length > 0 ? int.Parse(args[0]) + 1 : 1;

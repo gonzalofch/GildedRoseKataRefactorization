@@ -2,7 +2,7 @@
 using GildedRoseKata.Validators;
 namespace GildedRoseKata.Extensions;
 
-public static class QualityExtensions
+public static class QualityUpdater
 {
     public static void ChangeQuality(this IUpdatableItem item, int addedQuality)
     {

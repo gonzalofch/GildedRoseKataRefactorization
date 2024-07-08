@@ -14,4 +14,9 @@ public class Sulfuras : IInmutableItem
         Quality = quality;
         SellIn = sellIn;
     }
+
+    public Sulfuras()
+    {
+        Name = "Sulfuras, Hand of Ragnaros";
+    }
 }

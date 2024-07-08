@@ -2,7 +2,7 @@
 
 namespace GildedRoseKata.Extensions;
 
-public static class SellInExtensions
+public static class SellInUpdater
 {
     public static void UpdateSellIn(this IUpdatableItem item)
     {
