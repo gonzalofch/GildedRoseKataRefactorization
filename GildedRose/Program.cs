@@ -40,15 +40,13 @@ public class Program
 
         var items = SeedData.ObtainItems();
 
-        var app = new GildedRose(items);
-
+        var app = Factory.CreateGildedRoseInConsole();
+        
         int days = args.Length > 0 ? int.Parse(args[0]) + 1 : 1;
 
-        var outputPrinter = new OutputPrinter();
         Enumerable.Range(0, days).ToList().ForEach(day =>
         {
-            outputPrinter.PrintDay(day);
-            outputPrinter.PrintItemList(items);
+            app.Print(day);
             app.Update();
         });
     }

@@ -6,7 +6,7 @@ using GildedRoseKata.Interfaces;
 
 namespace GildedRoseKata;
 
-public class OutputPrinter
+public class ConsolePrinter : IPrinter
 {
     public void PrintDay(int numberDay)
     {
