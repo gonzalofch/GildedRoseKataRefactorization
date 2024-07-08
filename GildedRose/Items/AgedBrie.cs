@@ -1,14 +1,24 @@
-﻿namespace GildedRoseKata.Items;
+﻿using GildedRoseKata.Interfaces;
+using GildedRoseKata.Extensions;
+using GildedRoseKata.Validators;
+namespace GildedRoseKata.Items;
 
-public class AgedBrie : ItemBase
+public class AgedBrie : IUpdatableItem
 {
-    public AgedBrie(int sellIn, int quality) : base(sellIn, quality)
+    public string Name { get; set; }
+    public int SellIn { get; set; }
+    public int Quality { get; set; }
+    
+    public AgedBrie(int sellIn, int quality)
     {
         Name = "Aged Brie";
+        Quality = quality;
+        SellIn = sellIn;
     }
 
-    public override void UpdateQuality()
+    public void UpdateQuality()
     {
-        ChangeQuality(SellInBelowZero() ? 2 : 1);
+        this.ChangeQuality(SellIn.IsBellowMinimum() ? 2 : 1);
     }
+
 }

@@ -1,14 +1,24 @@
-﻿namespace GildedRoseKata.Items;
-
-public class NormalItem :ItemBase
+﻿using GildedRoseKata.Extensions;
+using GildedRoseKata.Validators;
+using GildedRoseKata.Interfaces;
+namespace GildedRoseKata.Items;
+public class NormalItem : IUpdatableItem
 {
-    public NormalItem(string name, int sellIn, int quality) : base(sellIn, quality)
+    public string Name { get; set; }
+    public int Quality { get; set; }
+    public int SellIn { get; set; }
+    
+    public NormalItem(string name, int sellIn, int quality) 
     {
         Name = name;
+        Quality = quality;
+        SellIn = sellIn;
     }
 
-    public override void UpdateQuality()
+    public void UpdateQuality()
     {
-        ChangeQuality(SellInBelowZero() ? -2 : -1);
+        this.ChangeQuality(SellIn.IsBellowMinimum() ? -2 : -1);
     }
+    
+   
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using GildedRoseKata.Items;
+using IItem = GildedRoseKata.Interfaces.IItem;
 
 namespace GildedRoseKata;
 
@@ -34,7 +35,7 @@ public class Program
          */
         Console.WriteLine("OMGHAI!");
 
-        IList<ItemBase> items = new List<ItemBase>
+        IList<IItem> items = new List<IItem>
         {
             new NormalItem("+5 Dexterity Vest", 10, 20),
             new AgedBrie(2, 0),

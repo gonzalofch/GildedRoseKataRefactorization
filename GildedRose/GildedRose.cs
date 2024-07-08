@@ -1,17 +1,40 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
+using GildedRoseKata.Extensions;
 using GildedRoseKata.Items;
+using GildedRoseKata.Interfaces;
+using IItem = GildedRoseKata.Interfaces.IItem;
 
 namespace GildedRoseKata;
 
-public class GildedRose(IList<ItemBase> items)
+public class GildedRose()
 {
+    private readonly IList<IItem> _items;
+
+    public GildedRose(IList<IItem> items) : this()
+    {
+        _items = items;
+    }
+
     public void Update()
     {
-        items.ToList().ForEach(item =>
+        foreach (var item in _items)
         {
-            item.UpdateSellIn();
-            item.UpdateQuality();
-        });
+            if (item is IUpdatableItem updatableItem)
+            {
+                updatableItem.UpdateSellIn();
+                updatableItem.UpdateQuality();
+            }
+        }
     }
+    
+    // public void Update()
+    // {
+    //     items.ToList().ForEach(item =>
+    //     {
+    //         item.UpdateSellIn();
+    //         item.UpdateQuality();
+    //     });
+    // }
 }

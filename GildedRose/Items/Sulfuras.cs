@@ -1,14 +1,17 @@
-﻿namespace GildedRoseKata.Items;
+﻿using GildedRoseKata.Interfaces;
 
-public class Sulfuras:ItemBase
+namespace GildedRoseKata.Items;
+
+public class Sulfuras : IInmutableItem
 {
-    public Sulfuras(int sellIn, int quality) : base( sellIn, quality)
+    public string Name { get; set; }
+    public int Quality { get; set; }
+    public int SellIn { get; set; }
+    
+    public Sulfuras(int sellIn, int quality)
     {
         Name = "Sulfuras, Hand of Ragnaros";
-    }
-
-    public override void UpdateQuality()
-    {
-        
+        Quality = quality;
+        SellIn = sellIn;
     }
 }
