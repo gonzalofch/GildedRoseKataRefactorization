@@ -1,44 +1,45 @@
 ﻿using GildedRoseKata.Interfaces;
-using GildedRoseKata.Validators;
-using GildedRoseKata.Extensions;
+using GildedRoseKata.ValueObjects;
 
 namespace GildedRoseKata.Items;
 
 public class BackstagePass : IUpdatableItem
 {
     public string Name { get; set; }
-    public int SellIn { get; set; }
-    public int Quality { get; set; }
+    public SellIn SellIn { get; set; }
+    public Quality Quality { get; set; }
 
     public BackstagePass(int sellIn, int quality)
     {
         Name = "Backstage passes to a TAFKAL80ETC concert";
-        Quality = quality;
-        SellIn = sellIn;
+        Quality = new Quality(quality);
+        SellIn = new SellIn(sellIn);
     }
 
     public BackstagePass()
     {
         Name = "Backstage passes to a TAFKAL80ETC concert";
     }
-    
-    public void UpdateQuality()
+
+    public void Update()
     {
+        SellIn.UpdateSellIn();
+
         if (SellIn.IsBellowMinimum())
         {
-            this.ChangeQuality(-Quality);
+            Quality.ChangeQuality(-Quality.QualityValue);
         }
         else
-            switch (SellIn)
+            switch (SellIn.SellInValue)
             {
                 case < 5:
-                    this.ChangeQuality(3);
+                    Quality.ChangeQuality(3);
                     break;
                 case < 10:
-                    this.ChangeQuality(2);
+                    Quality.ChangeQuality(2);
                     break;
                 default:
-                    this.ChangeQuality(1);
+                    Quality.ChangeQuality(1);
                     break;
             }
     }

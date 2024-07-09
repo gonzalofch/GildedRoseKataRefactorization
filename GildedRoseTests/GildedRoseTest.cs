@@ -13,7 +13,7 @@ public class GildedRoseTest
     {
         IList<IItem> items = new List<IItem> { new NormalItem("foo", 0, 0) };
         GildedRose app = Factory.CreateGildedRoseInConsole();
-        app.Update();
+        app.UpdateItems();
         Assert.Equal("foo", items[0].Name);
     }
 }

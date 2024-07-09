@@ -1,30 +1,32 @@
-﻿using GildedRoseKata.Extensions;
-using GildedRoseKata.Interfaces;
-using GildedRoseKata.Validators;
+﻿using GildedRoseKata.Interfaces;
+using GildedRoseKata.ValueObjects;
 
 namespace GildedRoseKata.Items;
 
 public class Conjured : IUpdatableItem
 {
     public string Name { get; set; }
-    public int SellIn { get; set; }
-    public int Quality { get; set; }
+    public SellIn SellIn { get; set; }
+    public Quality Quality { get; set; }
 
     public Conjured(string name, int sellIn, int quality)
     {
         Name = name;
-        SellIn = sellIn;
-        Quality = quality;
+        SellIn = new SellIn(sellIn);
+        Quality = new Quality(quality);
     }
 
     public Conjured()
     {
-        
     }
 
     public void UpdateQuality()
     {
-        this.ChangeQuality(SellIn.IsBellowMinimum() ? -2 : -1);
+    }
 
+    public void Update()
+    {
+        SellIn.UpdateSellIn();
+        Quality.ChangeQuality(SellIn.IsBellowMinimum() ? -2 : -1);
     }
 }

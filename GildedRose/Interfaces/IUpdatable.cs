@@ -2,5 +2,5 @@
 
 public interface IUpdatable
 {
-    void UpdateQuality();
+    void Update();
 }

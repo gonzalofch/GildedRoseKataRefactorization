@@ -20,7 +20,7 @@ public class ConsolePrinter : IPrinter
             output.AppendLine("name, sellIn, quality");
             items.ToList().ForEach(item =>
             {
-                output.AppendLine($"{item.Name}, {item.SellIn}, {item.Quality}");
+                output.AppendLine($"{item.Name}, {item.SellIn.ToString()}, {item.Quality.ToString()}");
             });
 
             output.AppendLine();

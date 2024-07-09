@@ -1,18 +1,19 @@
 ﻿using GildedRoseKata.Interfaces;
+using GildedRoseKata.ValueObjects;
 
 namespace GildedRoseKata.Items;
 
 public class Sulfuras : IInmutableItem
 {
     public string Name { get; set; }
-    public int Quality { get; set; }
-    public int SellIn { get; set; }
-    
+    public SellIn SellIn { get;set; }
+    public Quality Quality { get;set; }
+
     public Sulfuras(int sellIn, int quality)
     {
         Name = "Sulfuras, Hand of Ragnaros";
-        Quality = quality;
-        SellIn = sellIn;
+        Quality = new Quality(quality);
+        SellIn = new SellIn(sellIn);
     }
 
     public Sulfuras()

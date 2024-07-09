@@ -47,7 +47,7 @@ public class Program
         Enumerable.Range(0, days).ToList().ForEach(day =>
         {
             app.Print(day);
-            app.Update();
+            app.UpdateItems();
         });
     }
 }

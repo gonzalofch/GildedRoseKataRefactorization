@@ -1,20 +1,19 @@
 ﻿using GildedRoseKata.Interfaces;
-using GildedRoseKata.Extensions;
-using GildedRoseKata.Validators;
+using GildedRoseKata.ValueObjects;
 
 namespace GildedRoseKata.Items;
 
 public class AgedBrie : IUpdatableItem
 {
     public string Name { get; set; }
-    public int SellIn { get; set; }
-    public int Quality { get; set; }
+    public SellIn SellIn { get; set; }
+    public Quality Quality { get; set; }
 
     public AgedBrie(int sellIn, int quality)
     {
         Name = "Aged Brie";
-        Quality = quality;
-        SellIn = sellIn;
+        Quality = new Quality(quality);
+        SellIn = new SellIn(sellIn);
     }
 
     public AgedBrie()
@@ -22,8 +21,9 @@ public class AgedBrie : IUpdatableItem
         Name = "Aged Brie";
     }
 
-    public void UpdateQuality()
+    public void Update()
     {
-        this.ChangeQuality(SellIn.IsBellowMinimum() ? 2 : 1);
+        SellIn.UpdateSellIn();
+        Quality.ChangeQuality(SellIn.IsBellowMinimum() ? 2 : 1);
     }
 }

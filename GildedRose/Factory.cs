@@ -14,7 +14,7 @@ public static class Factory
 
     public static ILegendaryItem CreateLegendary()
     {
-        return new BaseLegendaryItem();
+        return new BaseLegendaryItem(){};
     }
 
     public static IUpdatableItem CreateConuredItem()

@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Metadata;
-using GildedRoseKata.Extensions;
 using GildedRoseKata.Items;
 using GildedRoseKata.Interfaces;
 using IItem = GildedRoseKata.Interfaces.IItem;
@@ -19,14 +18,15 @@ public class GildedRose
         _printer = printer;
     }
 
-    public void Update()
+    public void UpdateItems()
     {
         foreach (var item in _items)
         {
             if (item is IUpdatableItem updatableItem)
             {
-                updatableItem.UpdateSellIn();
-                updatableItem.UpdateQuality();
+                // updatableItem.UpdateSellIn();
+                // updatableItem.UpdateQuality();
+                updatableItem.Update();
             }
         }
     }

@@ -1,8 +1,10 @@
-﻿namespace GildedRoseKata.Interfaces;
+﻿using GildedRoseKata.ValueObjects;
+
+namespace GildedRoseKata.Interfaces;
 
 public interface IItem
 {
-    public string Name { get; set; }
-    public int Quality { get; set; }
-    public int SellIn { get; set; }
+    string Name { get; set; }
+    SellIn SellIn { get; set; }
+    Quality Quality { get; set; }
 }
