@@ -9,15 +9,11 @@ public class NormalItem : IUpdatableItem
     public Quality Quality { get; set; }
     public SellIn SellIn { get; set; }
 
-    public NormalItem(string name, int sellIn, int quality)
+    public NormalItem(string name, SellIn sellIn, Quality quality)
     {
         Name = name;
-        Quality = new Quality(quality);
-        SellIn = new SellIn(sellIn);
-    }
-
-    public NormalItem()
-    {
+        Quality = quality;
+        SellIn = sellIn;
     }
 
     public void Update()

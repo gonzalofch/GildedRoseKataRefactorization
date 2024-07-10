@@ -9,21 +9,13 @@ public class Conjured : IUpdatableItem
     public SellIn SellIn { get; set; }
     public Quality Quality { get; set; }
 
-    public Conjured(string name, int sellIn, int quality)
+    public Conjured(string name, SellIn sellIn, Quality quality)
     {
         Name = name;
-        SellIn = new SellIn(sellIn);
-        Quality = new Quality(quality);
+        SellIn = sellIn;
+        Quality = quality;
     }
-
-    public Conjured()
-    {
-    }
-
-    public void UpdateQuality()
-    {
-    }
-
+    
     public void Update()
     {
         SellIn.UpdateSellIn();

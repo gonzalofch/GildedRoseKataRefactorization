@@ -5,20 +5,14 @@ namespace GildedRoseKata.Items;
 
 public class BackstagePass : IUpdatableItem
 {
-    public string Name { get; set; }
+    public string Name { get; set; } = "Backstage passes to a TAFKAL80ETC concert";
     public SellIn SellIn { get; set; }
     public Quality Quality { get; set; }
 
-    public BackstagePass(int sellIn, int quality)
+    public BackstagePass(SellIn sellIn, Quality quality)
     {
-        Name = "Backstage passes to a TAFKAL80ETC concert";
-        Quality = new Quality(quality);
-        SellIn = new SellIn(sellIn);
-    }
-
-    public BackstagePass()
-    {
-        Name = "Backstage passes to a TAFKAL80ETC concert";
+        Quality = quality;
+        SellIn = sellIn;
     }
 
     public void Update()

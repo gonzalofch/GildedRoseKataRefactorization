@@ -4,7 +4,7 @@ namespace GildedRoseKata.ValueObjects;
 
 public class SellIn
 {
-    public int SellInValue { get; set; }
+    public int SellInValue { get; private set; }
     private const int MinSellIn = 0;
 
     public SellIn(int sellInValue)

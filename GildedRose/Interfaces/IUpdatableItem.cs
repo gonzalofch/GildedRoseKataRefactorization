@@ -4,7 +4,7 @@ namespace GildedRoseKata.Interfaces;
 
 public interface IUpdatableItem : IItem, IUpdatable
 {
-    new string Name { get; set; }
-    new  SellIn SellIn { get; set; }
-    new Quality Quality { get; set; }
+     string Name { get; protected set; }
+     SellIn SellIn { get; protected set; }
+     Quality Quality { get; protected set; }
 }
