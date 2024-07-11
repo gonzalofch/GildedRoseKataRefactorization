@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using GildedRoseKata.Interfaces;
 using GildedRoseKata.Items;
+using GildedRoseKata.Services;
 using IItem = GildedRoseKata.Interfaces.IItem;
 
 namespace GildedRoseKata;
@@ -36,6 +37,11 @@ public class Program
         -concatenar string usando $ {} Y StringBuilder (es más eficiente en loops)
 
          */
+        
+        var legendaryFactory = new LegendaryItemFactoryProvider();
+        
+        var factory = new Factory(legendaryFactory);
+        
         Console.WriteLine("OMGHAI!");
 
         var items = SeedData.ObtainItems();

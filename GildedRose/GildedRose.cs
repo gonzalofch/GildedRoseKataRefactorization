@@ -24,8 +24,6 @@ public class GildedRose
         {
             if (item is IUpdatableItem updatableItem)
             {
-                // updatableItem.UpdateSellIn();
-                // updatableItem.UpdateQuality();
                 updatableItem.Update();
             }
         }

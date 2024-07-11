@@ -2,13 +2,23 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using GildedRoseKata.Interfaces;
+using GildedRoseKata.Interfaces.ItemFactory;
+using GildedRoseKata.Interfaces.ItemFactory.LegendaryItemFactory;
 using GildedRoseKata.Items;
+using GildedRoseKata.Services;
 using GildedRoseKata.ValueObjects;
 
 namespace GildedRoseKata;
 
-public static class Factory
+public class Factory
 {
+    private static LegendaryItemFactoryProvider _legendaryFactory;
+
+    public Factory(LegendaryItemFactoryProvider legendaryItemFactory)
+    {
+        _legendaryFactory = legendaryItemFactory;
+    }
+
     public static GildedRose CreateGildedRoseInConsole()
     {
         return new GildedRose(SeedData.ObtainItems(), new ConsolePrinter());
@@ -16,21 +26,7 @@ public static class Factory
 
     public static ILegendaryItem CreateLegendary(LegendaryItems item, SellIn sellIn, Quality quality)
     {
-        return item switch
-        {
-            LegendaryItems.SulfurasHandOfRagnaros => new Sulfuras(sellIn, quality),
-            LegendaryItems.ThunderfuryBlessedBladeOfTheWindseeker => new Thunderfury(sellIn, quality),
-            LegendaryItems.AtieshGreatstaffOfTheGuardian => new Atiesh(sellIn, quality),
-            LegendaryItems.Shadowmourne => new Shadowmourne(sellIn, quality),
-            LegendaryItems.ValanyrHammerOfAncientKings => new Valanyr(sellIn, quality),
-            //aqui si tuviera mas clases las implementaria, pero como no tengo pues fue
-            // LegendaryItems.DragonwrathTarecgosasRest => new Dragonwrath(sellIn, quality),
-            // LegendaryItems.FangsOfTheFather => new FangsOfTheFather(sellIn, quality),
-            // LegendaryItems.WarglaivesOfAzzinoth => new Warglaives(sellIn, quality),
-            // LegendaryItems.ThoridalTheStarsFury => new Thoridal(sellIn, quality),
-            // LegendaryItems.GlaiveOfTheStormrage => new Glaive(sellIn, quality),
-            _ => throw new ArgumentException("Invalid legendary item")
-        };
+        return _legendaryFactory.CreateItem(item, sellIn, quality);
     }
 
     public static IUpdatableItem CreateConuredItem(string name, SellIn sellIn, Quality quality)
