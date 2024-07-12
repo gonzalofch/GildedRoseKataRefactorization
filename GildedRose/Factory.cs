@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using GildedRoseKata.Enums;
 using GildedRoseKata.Interfaces;
 using GildedRoseKata.Interfaces.ItemFactory;
 using GildedRoseKata.Interfaces.ItemFactory.LegendaryItemFactory;
@@ -12,9 +13,9 @@ namespace GildedRoseKata;
 
 public class Factory
 {
-    private static LegendaryItemFactoryProvider _legendaryFactory;
+    private static LegendaryItemFactory _legendaryFactory;
 
-    public Factory(LegendaryItemFactoryProvider legendaryItemFactory)
+    public Factory(LegendaryItemFactory legendaryItemFactory)
     {
         _legendaryFactory = legendaryItemFactory;
     }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using GildedRoseKata.Enums;
 using GildedRoseKata.Interfaces;
 using GildedRoseKata.Interfaces.ItemFactory;
 using GildedRoseKata.Interfaces.ItemFactory.LegendaryItemFactory;
@@ -7,11 +8,11 @@ using GildedRoseKata.ValueObjects;
 
 namespace GildedRoseKata.Services;
 
-public class LegendaryItemFactoryProvider
+public class LegendaryItemFactory
 {
     private readonly Dictionary<LegendaryItems, ILegendaryItemFactory> _legendaryItemFactoriesfactories;
 
-    public LegendaryItemFactoryProvider()
+    public LegendaryItemFactory()
     {
         _legendaryItemFactoriesfactories = new Dictionary<LegendaryItems, ILegendaryItemFactory>
         {

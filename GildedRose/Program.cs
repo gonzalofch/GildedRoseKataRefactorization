@@ -38,7 +38,7 @@ public class Program
 
          */
         
-        var legendaryFactory = new LegendaryItemFactoryProvider();
+        var legendaryFactory = new LegendaryItemFactory();
         
         var factory = new Factory(legendaryFactory);
         

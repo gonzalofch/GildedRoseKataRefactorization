@@ -7,16 +7,10 @@ using IItem = GildedRoseKata.Interfaces.IItem;
 
 namespace GildedRoseKata;
 
-public class GildedRose
+public class GildedRose(IList<IItem> items, IPrinter printer)
 {
-    private readonly IList<IItem> _items;
-    private readonly IPrinter _printer;
-
-    public GildedRose(IList<IItem> items, IPrinter printer)
-    {
-        _items = items;
-        _printer = printer;
-    }
+    private readonly IList<IItem> _items = items;
+    private readonly IPrinter _printer = printer;
 
     public void UpdateItems()
     {
@@ -34,5 +28,4 @@ public class GildedRose
         _printer.PrintDay(day);
         _printer.PrintItemList(_items);
     }
-
 }

@@ -14,7 +14,7 @@ public class GildedRoseTest
     public void foo()
     {
         IList<IItem> items = new List<IItem> { new NormalItem("foo", new SellIn(0), new Quality(0)) };
-        var legendaryFactory = new LegendaryItemFactoryProvider();
+        var legendaryFactory = new LegendaryItemFactory();
         GildedRose app = Factory.CreateGildedRoseInConsole();
         app.UpdateItems();
         Assert.Equal("foo", items[0].Name);

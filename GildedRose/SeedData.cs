@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using GildedRoseKata.Enums;
 using GildedRoseKata.Interfaces;
 using GildedRoseKata.ValueObjects;
 
